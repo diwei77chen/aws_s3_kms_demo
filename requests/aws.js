@@ -42,7 +42,7 @@ const downloadFileFromS3 = (s3, bucketName, key) => s3.getObject({ Bucket: bucke
  * return the encrypted data
  */
 const encryptData = (kms, cmk, data) => kms.encrypt({ KeyId: cmk, Plaintext: data }).promise()
-    .then(({ CiphertextBlob }) => CiphertextBlob?.toString('base64'))
+    .then(({ CiphertextBlob }) => CiphertextBlob?.toString("base64"))
 
 /**
  * download the files from a given AWS bucket, save the files to the project directory, 
@@ -59,10 +59,10 @@ const downloadAndSaveFiles = (bucketName = "s3-kms-sample-data", pathToSave = pr
     // Assumption 3: The files in the bucket are small size files (e.g., < 10MB)
     return listS3BucketFiles(s3, bucketName)
     .then(keys => openConcurrentDownloads(BPromise, keys, NUMBER_OF_CONCURRENCY_S3_DOWNLOAD, key => downloadFileFromS3(s3, bucketName, key)))
-    .then((result = []) => Promise.allSettled(result.map(({ key, Body }) => writeToFile(fs, pathToSave + key, Body))))
+    .then((results = []) => Promise.allSettled(results.map(({ key, Body }) => writeToFile(fs, pathToSave, key, Body))))
     .then(fileSettledResult => fileSettledResult.map(({ value }) => value).toString())
     .then(filenames => encryptData(kms, CMK, filenames))
-    .then((encryptedData = "") => writeToFile(fs, pathToSave + outputFilename, encryptedData))
+    .then((encryptedData = "") => writeToFile(fs, pathToSave, outputFilename, encryptedData))
 }
 
 module.exports = {
