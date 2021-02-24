@@ -2,7 +2,7 @@ const express = require("express");
 const http = require("http");
 const dotenv = require("dotenv");
 const { downloadAndSaveFiles } = require("./requests/aws");
-const AWS_Settings = require("../settings/AWS.json");
+const AWS_Settings = require("./settings/AWS.json");
 
 const app = express();
 const server = http.createServer(app);
