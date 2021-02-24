@@ -42,7 +42,7 @@ const downloadFileFromS3 = (s3, bucketName, key) => s3.getObject({ Bucket: bucke
  * return the encrypted data
  */
 const encryptData = (kms, cmk, data) => kms.encrypt({ KeyId: cmk, Plaintext: data }).promise()
-    .then(({ CiphertextBlob }) => CiphertextBlob.toString('base64'))
+    .then(({ CiphertextBlob }) => CiphertextBlob?.toString('base64'))
 
 /**
  * download the files from a given AWS bucket, save the files to the project directory, 
