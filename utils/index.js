@@ -5,7 +5,7 @@
  * @param {*} body The data
  * return a promise 
  */
-const writeToFile = (fs, path, body) => fs.outputFile(path, body);
+const writeToFile = (fs, pathToSave, key, body) => fs.outputFile(pathToSave + key, body).then(() => key);
 
 /**
  * download files concurrently.
