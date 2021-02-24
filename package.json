@@ -16,5 +16,17 @@
   "bugs": {
     "url": "https://github.com/diwei77chen/aws_s3_kms_demo/issues"
   },
-  "homepage": "https://github.com/diwei77chen/aws_s3_kms_demo#readme"
+  "homepage": "https://github.com/diwei77chen/aws_s3_kms_demo#readme",
+  "dependencies": {
+    "aws-sdk": "^2.848.0",
+    "bluebird": "^3.7.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fs-extra": "^9.1.0",
+    "http": "0.0.1-security"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^5.1.0",
+    "nodemon": "^2.0.7"
+  }
 }
