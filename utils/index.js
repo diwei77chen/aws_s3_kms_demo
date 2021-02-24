@@ -3,21 +3,27 @@
  * @param {object} fs NodeJS file system
  * @param {string} path Path to save the data
  * @param {*} body The data
- * return a promise 
+ * return a promise
  */
-const writeToFile = (fs, pathToSave, key, body) => fs.outputFile(pathToSave + key, body).then(() => key);
+const writeToFile = (fs, pathToSave, key, body) =>
+  fs.outputFile(pathToSave + key, body).then(() => key);
 
 /**
  * download files concurrently.
- * @param {object} bPromise Bluebird Promise 
- * @param {array} keys Array of file paths 
+ * @param {object} bPromise Bluebird Promise
+ * @param {array} keys Array of file paths
  * @param {number} concurrency Number of concurrent dowloads
  * @param {function} downloadRequest The download request
- * return the final download result for the given file paths 
+ * return the final download result for the given file paths
  */
-const openConcurrentDownloads = (bPromise, keys = [], concurrency, downloadRequest) => bPromise.map(keys, key => downloadRequest(key), { concurrency })
+const openConcurrentDownloads = (
+  bPromise,
+  keys = [],
+  concurrency,
+  downloadRequest
+) => bPromise.map(keys, (key) => downloadRequest(key), { concurrency });
 
 module.exports = {
-    writeToFile,
-    openConcurrentDownloads
-}
+  writeToFile,
+  openConcurrentDownloads,
+};

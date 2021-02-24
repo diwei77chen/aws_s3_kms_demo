@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const dotenv = require("dotenv");
-const { downloadAndSaveFiles }= require('./requests/aws');
+const { downloadAndSaveFiles } = require("./requests/aws");
 
 const app = express();
 const server = http.createServer(app);
@@ -16,8 +16,12 @@ app.use(express.json());
 const PORT = process.env.PORT || 6000;
 
 server.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}.`);
-    downloadAndSaveFiles()
-    .then(() => console.log("The files have been downloaded and saved to the project directory."))
-    .catch(err => console.error("Download And Save Files error: ", err))
-})
+  console.log(`Server started on port ${PORT}.`);
+  downloadAndSaveFiles()
+    .then(() =>
+      console.log(
+        "The files have been downloaded and saved to the project directory."
+      )
+    )
+    .catch((err) => console.error("Download And Save Files error: ", err));
+});
