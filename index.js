@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const dotenv = require("dotenv");
-const { downloadAndSaveFiles }= require('./requests/s3');
+const { downloadAndSaveFiles }= require('./requests/aws');
 
 const app = express();
 const server = http.createServer(app);
