@@ -14,4 +14,4 @@ Note: When the server gets started, it automatically downloads the files in a gi
 # Run the tests:
 Run the unit tests and the integration test by:
 
-    `npm test`
+`npm test`
