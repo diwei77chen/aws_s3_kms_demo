@@ -66,7 +66,7 @@ const downloadAndSaveFiles = (
   pathToSave = process.cwd() + "/tmp/",
   outputFilename = "filenames"
 ) => {
-  console.log("Start downloading the files from the default S3 bucket...");
+  console.log(`Start downloading the files from s3 bucket ${bucketName}...`);
   // Assumption 1: We have access to download all the files in the given bucket
   // Assumption 2: We download all the files or no file
   // Assumption 3: The files in the bucket are small size files (e.g., < 10MB)
