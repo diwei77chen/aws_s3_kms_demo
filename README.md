@@ -8,7 +8,7 @@ Open a new terminal window, change to the project directory:
   1. Install the dependencies. Run: 
 
     npm install
-  1. Start the server. Run:
+  2. Start the server. Run:
 
     node index.js
 Note: When the server gets started, it automatically downloads the files in a given AWS S3 bucket.
